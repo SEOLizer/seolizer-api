@@ -24,7 +24,7 @@ if ($command != '') {
     echo($output);
     echo("Result\n");
     echo("----------------------\n");
-    print_r($result);
+    print_r($result['result'['response']]);
     echo("----------------------\n");
 } else {
     echo("no command! Exit\n");
