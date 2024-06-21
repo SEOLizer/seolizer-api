@@ -29,7 +29,9 @@ function main() {
         if (strtolower($cmd) == 'exit') exit(0);
 
         $cmdArray = parseParameters($cmd);
+        echo("-----------------------\n");
         print_r($cmdArray);
+        echo("-----------------------\n");
 
         if ($cmd != '') {
             $output = "-----------------------------------------------------------\n";
