@@ -23,7 +23,7 @@ if ($command != '') {
     $output .= "Credit used: " . $result['result']['request']['credits'] . "\n";
     $output .= "-----------------------------------------------------------\n";
     echo($output);
-    print_r($result['result']);
+    print_r($result['result']['response']);
     //echo("Result\n");
     //echo("----------------------\n");
     //print_r();
