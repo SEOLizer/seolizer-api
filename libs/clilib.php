@@ -102,3 +102,18 @@ function printJsonAsTable($jsonString) {
             return str_pad('', $width, '-');
         }, $columnWidths)) . "-+\n";
 }
+
+function parseParameters($input) {
+    $pattern = '/(\w+)=\'([^\']*)\'|(\w+)=([^ ]+)/';
+    preg_match_all($pattern, $input, $matches, PREG_SET_ORDER);
+
+    $result = [];
+    foreach ($matches as $match) {
+        if (isset($match[1]) && !empty($match[1])) {
+            $result[$match[1]] = $match[2];
+        } elseif (isset($match[3]) && !empty($match[3])) {
+            $result[$match[3]] = $match[4];
+        }
+    }
+    return $result;
+}
