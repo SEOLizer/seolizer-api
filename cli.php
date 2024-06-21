@@ -19,7 +19,7 @@ function displayMenu() {
 function main() {
     displayMenu();
     while (true) {
-        echo "Enter your choice (1-3): ";
+        echo "command: ";
         $cmd = trim(fgets(STDIN));
 
         if (strtolower($cmd) == 'help') {
@@ -27,12 +27,11 @@ function main() {
             $cmd = '';
         }
         if (strtolower($cmd) == 'exit') exit(0);
+
+        $cmdArray = parseParameters($cmd);
+        print_r($cmdArray);
+
         if ($cmd != '') {
-            for ($i = 2; $i <= 10; $i++) {
-                if ($argv[$i] != "") {
-                    $para .= $argv[$i] . "&";
-                }
-            }
             $output = "-----------------------------------------------------------\n";
             $output .= "Function: " . $result['result']['request']['action'] . "\n";
             $output .= "Credit used: " . $result['result']['request']['credits'] . "\n";
