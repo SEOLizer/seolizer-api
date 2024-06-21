@@ -21,7 +21,7 @@ if ($command != '') {
     $output = "-----------------------------------------------------------\n";
     $output .= "Function: " . $result['result']['request']['action'] . "\n";
     $output .= "Credit used: " . $result['result']['request']['credits'] . "\n";
-    $output .= "Primary key: " . $result['result']['response']['pointers']['attributes']['prikey']] . "\n";
+    $output .= "Primary key: " . $result['result']['response']['pointers']['attributes']['prikey'] . "\n";
     $output .= "-----------------------------------------------------------\n";
     echo($output);
     if ($result['result']['response']['pointers']['attributes']['data.pointer'] != '') {
