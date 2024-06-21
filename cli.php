@@ -17,6 +17,12 @@ if ($command != '') {
         }
     }
     require_once('libs/api.php');
+
+    $output  = "-----------------------------------------------------------\n";
+    $output .= "Function: " . $result['result']['request']['action'] . "\n";
+    $output .= "Credit used: " . $result['result']['request']['credits'] . "\n";
+    $output .= "-----------------------------------------------------------\n";
+
     echo("Result\n");
     echo("----------------------\n");
     print_r($result);
