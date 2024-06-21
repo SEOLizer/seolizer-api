@@ -3,6 +3,8 @@
 error_reporting(0);
 
 require('libs/clilib.php');
+require_once('libs/https.php');
+require_once('libs/functionWarp.php');
 
 function displayMenu() {
     echo "===================================\n";
@@ -36,17 +38,22 @@ function main() {
                 $para .= $key . '=' . $value . '&';
             }
 
-            require_once('libs/api.php');
+            require('libs/api.php');
 
             $output = "-----------------------------------------------------------\n";
             $output .= "Function: " . $result['result']['request']['action'] . "\n";
             $output .= "Credit used: " . $result['result']['request']['credits'] . "\n";
-            $output .= "Primary key: " . $result['result']['response']['pointers']['attributes']['prikey'] . "\n";
+            if (isset($result['result']['response']['pointers']['attributes']['prikey'])) {
+                $output .= "Primary key: " . $result['result']['response']['pointers']['attributes']['prikey'] . "\n";
+            }
             $output .= "-----------------------------------------------------------\n";
             echo($output);
-            if ($result['result']['response']['pointers']['attributes']['data.pointer'] != '') {
-                printJsonAsTable(json_encode($result['result']['response'][$result['result']['response']['pointers']['attributes']['data.pointer']]));
+            if (isset($result['result']['response']['pointers']['attributes']['prikey'])) {
+                if ($result['result']['response']['pointers']['attributes']['data.pointer'] != '') {
+                    printJsonAsTable(json_encode($result['result']['response'][$result['result']['response']['pointers']['attributes']['data.pointer']]));
+                }
             }
+            unset($result);
         }
     }
 }
