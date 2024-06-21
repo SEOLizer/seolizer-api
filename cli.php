@@ -10,7 +10,6 @@ $command = $argv[1];
 $para = '';
 
 if ($command != '') {
-    echo("API-Function: " . $command . "\n");
     for ($i = 2; $i <= 10; $i++) {
         if ($argv[$i] != "") {
             $para .= $argv[$i] . "&";
@@ -22,7 +21,7 @@ if ($command != '') {
     $output .= "Function: " . $result['result']['request']['action'] . "\n";
     $output .= "Credit used: " . $result['result']['request']['credits'] . "\n";
     $output .= "-----------------------------------------------------------\n";
-
+    echo($output);
     echo("Result\n");
     echo("----------------------\n");
     print_r($result);
