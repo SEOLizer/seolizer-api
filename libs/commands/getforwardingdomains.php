@@ -5,7 +5,6 @@ function sapi_getforwardingdomains($para) {
     $para = substr($para,0,-1);
     $requestUrl = 'https://' . $apiUrl . '/' . $apiVersion . '/getforwardingdomains/?' . $para;
     $result = slCallPostUrl($requestUrl,$apiKey,'');
-    $xml = simplexml_load_string($result);
-    $json = json_encode($xml);
+    $json = json_encode($result);
     return json_decode($json,TRUE);
 }
