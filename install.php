@@ -7,7 +7,7 @@ echo(" SEOLizer API-Config V0.1\n");
 echo("-------------------------\n");
 
 $url = 'api.seolizer.de';
-$version = '2.0';
+$version = '2.1';
 
 do {
   echo("Please make sure that the key is entered in your user account and is active.\n");
