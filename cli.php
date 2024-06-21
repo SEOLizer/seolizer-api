@@ -24,6 +24,7 @@ if ($command != '') {
     $output .= "-----------------------------------------------------------\n";
     echo($output);
     print_r($result['result']['response']);
+    printJsonAsTable($result['result']['response']['domains']);
     //echo("Result\n");
     //echo("----------------------\n");
     //print_r();
