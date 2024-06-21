@@ -2,9 +2,7 @@
 
 error_reporting(0);
 
-require_once('libs/api.php');
-require_once('libs/clilib.php');
-
+require('libs/clilib.php');
 
 function displayMenu() {
     echo "===================================\n";
@@ -28,12 +26,18 @@ function main() {
         }
         if (strtolower($cmd) == 'exit') exit(0);
 
+        $cmds = explode(" ",$cmd);
         $cmdArray = parseParameters($cmd);
-        echo("-----------------------\n");
-        print_r($cmdArray);
-        echo("-----------------------\n");
+        $command = $cmds[0];
 
-        if ($cmd != '') {
+        if ($command != '') {
+            $para = '';
+            foreach ($cmdArray as $key => $value) {
+                $para .= $key . '=' . $value . '&';
+            }
+
+            require_once('libs/api.php');
+
             $output = "-----------------------------------------------------------\n";
             $output .= "Function: " . $result['result']['request']['action'] . "\n";
             $output .= "Credit used: " . $result['result']['request']['credits'] . "\n";
