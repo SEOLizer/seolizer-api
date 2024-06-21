@@ -18,17 +18,14 @@ if ($command != '') {
     require_once('libs/api.php');
     require_once('libs/clilib.php');
 
-    $output  = "-----------------------------------------------------------\n";
+    $output = "-----------------------------------------------------------\n";
     $output .= "Function: " . $result['result']['request']['action'] . "\n";
     $output .= "Credit used: " . $result['result']['request']['credits'] . "\n";
     $output .= "-----------------------------------------------------------\n";
     echo($output);
-    print_r($result['result']['response']);
-    printJsonAsTable(json_encode($result['result']['response']['domains']));
-    //echo("Result\n");
-    //echo("----------------------\n");
-    //print_r();
-    //echo("----------------------\n");
+    if ($result['result']['response']['list.pointer']['attributes']['pointer'] != '') {
+        printJsonAsTable(json_encode($result['result']['response'][$result['result']['response']['list.pointer']['attributes']['pointer']]));
+    }
 } else {
     echo("no command! Exit\n");
 }
